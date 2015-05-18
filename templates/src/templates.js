@@ -17,8 +17,8 @@ template = function(str, dependence, left_separator, right_separator){
     // Разделитель с правой стороны
         right_separator = (right_separator||'%%');
         
-    return str.replace(new RegExp(left_separator+"(.*?)"+right_separator,"ig"),function(){
+    return str.replace(new RegExp(left_separator+"(.*?)"+right_separator,"ig"),function(def, key){
         // Если зависимость не найдена то ничего не меняем
-        return dependence[arguments[1]] ? dependence[arguments[1]] : arguments[0]
+        return dependence[key] ? dependence[key] : def
     });
 }
