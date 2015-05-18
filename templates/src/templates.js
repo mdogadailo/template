@@ -22,3 +22,7 @@ template = function(str, dependence, left_separator, right_separator){
         return dependence[key] ? dependence[key] : def
     });
 }
+
+
+// Without comments
+template = function(str, dependence, left_separator, right_separator){if(!str) return ''; var dependence = (dependence||[]), left_separator = (left_separator||'%%'), right_separator = (right_separator||'%%'); return str.replace(new RegExp(left_separator+"(.*?)"+right_separator,"ig"),function(){return dependence[arguments[1]] ? dependence[arguments[1]] : arguments[0] }); }
