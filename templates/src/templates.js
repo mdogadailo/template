@@ -1,7 +1,7 @@
 /**
  * Минималистическая шаблонная система.
  * @param {string} str строка для замены.
- * @param {array} dependence зависимость, что на что меняется.
+ * @param {Object} dependence зависимость, что на что меняется.
  * @param {string} left_separator левый разделитель.
  * @param {string} right_separator правый разделитель.
  * @return {string} Обработанную строку.
