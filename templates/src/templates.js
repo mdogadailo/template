@@ -4,6 +4,7 @@
  * @param {Object} dependence - list of dependencies to replace.
  * @param {string} left_separator - left separator.
  * @param {string} right_separator right separator.
+ * @param {bool} strict - replacement mode (true - don't replace missed dependence, false - replace with empty value) 
  * @return {string} - converted string.
  */
 template = function(template, dependence, left_separator, right_separator, strict){
@@ -16,7 +17,7 @@ template = function(template, dependence, left_separator, right_separator, stric
         
     return template.replace(new RegExp(left_separator+"(.*?)"+right_separator,"ig"), function(def, key){
         // replace by dependence list
-        return dependence[key] ? dependence[key] : def;
+        return dependence[key] ? dependence[key] : strict ? def : ''
     });
 }
 
