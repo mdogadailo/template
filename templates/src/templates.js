@@ -1,24 +1,22 @@
 /**
- * Минималистическая шаблонная система.
- * @param {string} str строка для замены.
- * @param {Object} dependence зависимость, что на что меняется.
- * @param {string} left_separator левый разделитель.
- * @param {string} right_separator правый разделитель.
- * @return {string} Обработанную строку.
+ * Minimal template system.
+ * @param {string} template - string for conversion.
+ * @param {Object} dependence - list of dependencies to replace.
+ * @param {string} left_separator - left separator.
+ * @param {string} right_separator right separator.
+ * @return {string} - converted string.
  */
-template = function(str, dependence, left_separator, right_separator){
-    // Если ничего не передать, то вернет пустую строку
-    if(!str) return '';
-    // Если не передали массив с зависимостями то ничего заменяться не будет
-    //@TODO возможно выходить надо тут тоже как и в случае с пустой строкой
+template = function(template, dependence, left_separator, right_separator, strict){
+    // Exit if not a string
+    if(!template) return '';
+
     var dependence = (dependence||[]),
-    // Разделитель с левой стороны        
         left_separator = (left_separator||'%%'),
-    // Разделитель с правой стороны
         right_separator = (right_separator||'%%');
         
-    return str.replace(new RegExp(left_separator+"(.*?)"+right_separator,"ig"),function(def, key){
-        // Если зависимость не найдена то ничего не меняем
-        return dependence[key] ? dependence[key] : def
+    return template.replace(new RegExp(left_separator+"(.*?)"+right_separator,"ig"), function(def, key){
+        // replace by dependence list
+        return dependence[key] ? dependence[key] : def;
     });
 }
+
